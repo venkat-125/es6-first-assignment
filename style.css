@@ -1,0 +1,40 @@
+body {
+ 
+}
+.container{
+  margin-bottom: 10px;
+}
+
+*[role="form"] {
+ max-width: 530px;
+ padding: 15px;
+ margin: 0 auto;
+ border-radius: 0.3em;
+ background-color: #f2f2f2;
+}
+
+*[role="form"] h2 { 
+ font-family: 'Open Sans' , sans-serif;
+ font-size: 40px;
+ font-weight: 600;
+ color: #000000;
+ margin-top: 5%;
+ text-align: center;
+ text-transform: uppercase;
+ letter-spacing: 4px;
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+  
