@@ -1,40 +1,115 @@
+
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ 
  
 }
-.container{
-  margin-bottom: 10px;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  position: relative;
+  padding: 50px 50px;
+  background: #fff;
+  border-radius: 10px;
 }
-
-*[role="form"] {
- max-width: 530px;
- padding: 15px;
- margin: 0 auto;
- border-radius: 0.3em;
- background-color: #f2f2f2;
+.container .input-form {
+  position: relative;
+  width: 300px;
+  height: 40px;
+  margin-bottom: 0px;
 }
-
-*[role="form"] h2 { 
- font-family: 'Open Sans' , sans-serif;
- font-size: 40px;
- font-weight: 600;
- color: #000000;
- margin-top: 5%;
- text-align: center;
- text-transform: uppercase;
- letter-spacing: 4px;
-}
-
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+.container .input-form input {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  border: 1px solid #ddd;
-  margin-top: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.205);
+  outline: none;
+  background: none;
+  padding: 10px;
+  font-size: 12px;
+}
+.container .input-form:last-child {
+  margin-bottom: 0;
+}
+.container .input-form span {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  font-size: 10px;
+  transition: 0.6s;
+  font-family: sans-serif;
+}
+.container .input-form input:focus ~ span,
+.container .input-form input:valid ~ span {
+  transform: translateX(-13px) translateY(-35px);
+  font-size: 1em;
+}
+.container .input-form [type="button"] {
+  width: 50%;
+  background: dodgerblue;
+  color: #fff;
+  border: #fff;
+}
+.container .input-form:hover [type="button"] {
+  background: linear-gradient(45deg, greenyellow, dodgerblue);
 }
 
-th, td {
-  text-align: left;
-  padding: 8px;
+.list{
+    display: flex;
+    justify-content: center;
 }
-  
+.button{
+    width: 100%;
+    padding: 10px 40px;
+    color: white;
+    background-color: green;
+font-size: 15px;
+}
+.table{
+    padding: 10px 0px;
+    border: 1px solid green;
+    width: 50%;
+}
+.td{
+    padding: 10px 20px;
+    font-size: 15px;
+}
+.js-btn{
+    padding: 5px 15px;
+    color: white;
+    background-color: green;
+}
+
+
+.list{
+  display: none;
+}
+
+ .container {
+ margin-top: 10px;
+  padding: 0px;
+}
+
+.controls-item {
+  display: inline-block;
+}
+
+.btn {
+  margin: 1px;
+}
+
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+  border-top: 0;
+  font-size: 15px;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  font-size: 12px;
+}

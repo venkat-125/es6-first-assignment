@@ -1,110 +1,649 @@
-let count = 0;
-let selectedRow = null;
+var userArray = [];
 
-function onformSubmit() { //After clicking Submit Button
-    let formData = readformData();
-    if (selectedRow == null) { 
-        insertNewRecord(formData);
-    } else {
-        updateRecord(formData);
+if(localStorage.getItem('userData')==null){
+     localStorage.setItem('userData',JSON.stringify(userArray));
+}
+showUserData();
+
+      function addUser(){
+        event.preventDefault();
+          var firstname = document.getElementById('firstname').value;
+          var lastname = document.getElementById('lastname').value;
+         var email =  document.getElementById('email').value;
+         var degree =  document.getElementById('degree').value;
+         var sdegree =  document.getElementById('sdegree').value;
+         var number =  document.getElementById('number').value;
+         
+
+        var userList = {
+            "firstname" : firstname,
+            "lastname"  : lastname,
+            "email"     : email,
+            "degree"    : degree,
+            "sdegree"   : sdegree,
+            "number"    : number
+        }
+
+       
+        var users = JSON.parse(localStorage.getItem('userData'))
+        users.push(userList);
+        localStorage.setItem('userData',JSON.stringify(users));
+        console.log(users);
+
+        emptyFiled();
+        showUserData();
+      }
+
+      function emptyFiled(){
+          document.getElementById('firstname').value="";
+          document.getElementById('lastname').value="";
+          document.getElementById('email').value="";
+          document.getElementById('degree').value="";
+          document.getElementById('sdegree').value="";
+          document.getElementById('number').value="";
+          document.getElementById('userData').innerHTML="";
+        }
+
+        function showUserData(){
+          var alluserList = JSON.parse(localStorage.getItem('userData'));
+          var dataList = document.getElementById('userData');
+          for(var i=0; i<alluserList.length; i++){
+            dataList.innerHTML=dataList.innerHTML+
+            "<td class='td'>"+alluserList[i].firstname+" "+alluserList[i].lastname+"</td>"+
+            "<td class='td'>"+alluserList[i].email+"</td>"+"<td class='td'>"+
+            "<td class='td'>"+alluserList[i].degree+"</td>"+"<td class='td'>"+
+            "<td class='td'>"+alluserList[i].sdegree+"</td>"+"<td class='td'>"+
+            "<td class='td'>"+alluserList[i].number+"</td>"+"<td class='td'>"+
+            "<button class='js-btn' onclick=deleteComment("+alluserList[i].emailId+")>Delete</button>"+
+            "</td>";
+          }
+          localStorage.getItem('userData',JSON.stringify(alluserList))
+
+        }
+
+        function deleteComment(emailId){
+      event.preventDefault();
+      var alluserList=JSON.parse(localStorage.getItem("userData"));
+      for(var i=0;i<alluserList.length;i++){
+        if(emailId === alluserList[i].emailId){
+            alluserList.splice(i,1);
+        }
+      }
+      localStorage.setItem("userData",JSON.stringify(alluserList));
+      emptyFiled();
+      showUserData();
     }
-    resetForm();
+
+    
+    
+
+    
+
+
+    var userData = [{
+      'first_name': 'Russell',
+      'last_name': 'Wilson',
+      'rank': '1',
+  },
+  {
+      'first_name': 'Matt',
+      'last_name': 'Hasselbeck',
+      'rank': '2',
+  },
+  {
+      'first_name': 'Jim',
+      'last_name': 'Zorn',
+      'rank': '3',
+  },
+  {
+      'first_name': 'Brady',
+      'last_name': 'Quinn',
+      'rank': '4',
+  },
+  {
+      'first_name': 'Charly',
+      'last_name': 'Whitehurst',
+      'rank': '5',
+  },
+  {
+      'first_name': 'Duane',
+      'last_name': 'Devine',
+      'rank': '6',
+  },
+  {
+      'first_name': 'Tom',
+      'last_name': 'Brady',
+      'rank': '7',
+  },
+  {
+      'first_name': 'Arron',
+      'last_name': 'Rogers',
+      'rank': '8',
+  },
+  {
+      'first_name': 'Patrick',
+      'last_name': 'Mahoms',
+      'rank': '9',
+  },
+  {
+      'first_name': 'Gardner',
+      'last_name': 'Minshew',
+      'rank': '10',
+  },
+  {
+      'first_name': 'Andrew',
+      'last_name': 'Luck',
+      'rank': '11',
+  },
+  {
+      'first_name': 'Josh',
+      'last_name': 'Gordon',
+      'rank': '12',
+  },
+  {
+      'first_name': 'Drew',
+      'last_name': 'Brees',
+      'rank': '13',
+  },
+  {
+      'first_name': 'Cam',
+      'last_name': 'Newton',
+      'rank': '14',
+  },
+  {
+      'first_name': 'Joe',
+      'last_name': 'Montana',
+      'rank': '15',
+  },
+  {
+      'first_name': 'Steve',
+      'last_name': 'Young',
+      'rank': '16',
+  },
+  {
+      'first_name': 'Dan',
+      'last_name': 'Jones',
+      'rank': '17',
+  },
+  {
+      'first_name': 'Eli',
+      'last_name': 'Manning',
+      'rank': '18',
+  },
+  {
+      'first_name': 'Marus',
+      'last_name': 'Marriota',
+      'rank': '19',
+  },
+  {
+      'first_name': 'Ryan',
+      'last_name': 'Fitzpatrick',
+      'rank': '21',
+  },
+  {
+      'first_name': 'Chad',
+      'last_name': 'Pennington',
+      'rank': '21',
+  },
+  {
+      'first_name': 'John',
+      'last_name': 'Doe',
+      'rank': '22',
+  },
+  {
+      'first_name': 'Russell',
+      'last_name': 'Wilson',
+      'rank': '21',
+  },
+  {
+      'first_name': 'Matt',
+      'last_name': 'Hasselbeck',
+      'rank': '22',
+  },
+  {
+      'first_name': 'Jim',
+      'last_name': 'Zorn',
+      'rank': '23',
+  },
+  {
+      'first_name': 'Brady',
+      'last_name': 'Quinn',
+      'rank': '24',
+  },
+  {
+      'first_name': 'Charly',
+      'last_name': 'Whitehurst',
+      'rank': '25',
+  },
+  {
+      'first_name': 'Duane',
+      'last_name': 'Devine',
+      'rank': '26',
+  },
+  {
+      'first_name': 'Tom',
+      'last_name': 'Brady',
+      'rank': '27',
+  },
+  {
+      'first_name': 'Arron',
+      'last_name': 'Rogers',
+      'rank': '28',
+  },
+  {
+      'first_name': 'Patrick',
+      'last_name': 'Mahoms',
+      'rank': '29',
+  },
+  {
+      'first_name': 'Gardner',
+      'last_name': 'Minshew',
+      'rank': '30',
+  },
+  {
+      'first_name': 'Andrew',
+      'last_name': 'Luck',
+      'rank': '31',
+  },
+  {
+      'first_name': 'Josh',
+      'last_name': 'Gordon',
+      'rank': '32',
+  },
+  {
+      'first_name': 'Drew',
+      'last_name': 'Brees',
+      'rank': '33',
+  },
+  {
+      'first_name': 'Cam',
+      'last_name': 'Newton',
+      'rank': '34',
+  },
+  {
+      'first_name': 'Joe',
+      'last_name': 'Montana',
+      'rank': '35',
+  },
+  {
+      'first_name': 'Steve',
+      'last_name': 'Young',
+      'rank': '36',
+  },
+  {
+      'first_name': 'Dan',
+      'last_name': 'Jones',
+      'rank': '37',
+  },
+  {
+      'first_name': 'Eli',
+      'last_name': 'Manning',
+      'rank': '38',
+  },
+  {
+      'first_name': 'Marus',
+      'last_name': 'Marriota',
+      'rank': '39',
+  },
+  {
+      'first_name': 'Ryan',
+      'last_name': 'Fitzpatrick',
+      'rank': '40',
+  },
+  {
+      'first_name': 'Chad',
+      'last_name': 'Pennington',
+      'rank': '41',
+  },
+  {
+      'first_name': 'John',
+      'last_name': 'Doe',
+      'rank': '22',
+  },
+  {
+      'first_name': 'Russell',
+      'last_name': 'Wilson',
+      'rank': '1',
+  },
+  {
+      'first_name': 'Matt',
+      'last_name': 'Hasselbeck',
+      'rank': '2',
+  },
+  {
+      'first_name': 'Jim',
+      'last_name': 'Zorn',
+      'rank': '3',
+  },
+  {
+      'first_name': 'Brady',
+      'last_name': 'Quinn',
+      'rank': '4',
+  },
+  {
+      'first_name': 'Charly',
+      'last_name': 'Whitehurst',
+      'rank': '5',
+  },
+  {
+      'first_name': 'Duane',
+      'last_name': 'Devine',
+      'rank': '6',
+  },
+  {
+      'first_name': 'Tom',
+      'last_name': 'Brady',
+      'rank': '7',
+  },
+  {
+      'first_name': 'Arron',
+      'last_name': 'Rogers',
+      'rank': '8',
+  },
+  {
+      'first_name': 'Patrick',
+      'last_name': 'Mahoms',
+      'rank': '9',
+  },
+  {
+      'first_name': 'Gardner',
+      'last_name': 'Minshew',
+      'rank': '10',
+  },
+  {
+      'first_name': 'Andrew',
+      'last_name': 'Luck',
+      'rank': '11',
+  },
+  {
+      'first_name': 'Josh',
+      'last_name': 'Gordon',
+      'rank': '12',
+  },
+  {
+      'first_name': 'Drew',
+      'last_name': 'Brees',
+      'rank': '13',
+  },
+  {
+      'first_name': 'Cam',
+      'last_name': 'Newton',
+      'rank': '14',
+  },
+  {
+      'first_name': 'Joe',
+      'last_name': 'Montana',
+      'rank': '15',
+  },
+  {
+      'first_name': 'Steve',
+      'last_name': 'Young',
+      'rank': '16',
+  },
+  {
+      'first_name': 'Dan',
+      'last_name': 'Jones',
+      'rank': '17',
+  },
+  {
+      'first_name': 'Eli',
+      'last_name': 'Manning',
+      'rank': '18',
+  },
+  {
+      'first_name': 'Marus',
+      'last_name': 'Marriota',
+      'rank': '19',
+  },
+  {
+      'first_name': 'Ryan',
+      'last_name': 'Fitzpatrick',
+      'rank': '21',
+  },
+  {
+      'first_name': 'Chad',
+      'last_name': 'Pennington',
+      'rank': '21',
+  },
+  {
+      'first_name': 'John',
+      'last_name': 'Doe',
+      'rank': '22',
+  }, {
+      'first_name': 'Russell',
+      'last_name': 'Wilson',
+      'rank': '1',
+  },
+  {
+      'first_name': 'Matt',
+      'last_name': 'Hasselbeck',
+      'rank': '2',
+  },
+  {
+      'first_name': 'Jim',
+      'last_name': 'Zorn',
+      'rank': '3',
+  },
+  {
+      'first_name': 'Brady',
+      'last_name': 'Quinn',
+      'rank': '4',
+  },
+  {
+      'first_name': 'Charly',
+      'last_name': 'Whitehurst',
+      'rank': '5',
+  },
+  {
+      'first_name': 'Duane',
+      'last_name': 'Devine',
+      'rank': '6',
+  },
+  {
+      'first_name': 'Tom',
+      'last_name': 'Brady',
+      'rank': '7',
+  },
+  {
+      'first_name': 'Arron',
+      'last_name': 'Rogers',
+      'rank': '8',
+  },
+  {
+      'first_name': 'Patrick',
+      'last_name': 'Mahoms',
+      'rank': '9',
+  },
+  {
+      'first_name': 'Gardner',
+      'last_name': 'Minshew',
+      'rank': '10',
+  },
+  {
+      'first_name': 'Andrew',
+      'last_name': 'Luck',
+      'rank': '11',
+  },
+  {
+      'first_name': 'Josh',
+      'last_name': 'Gordon',
+      'rank': '12',
+  },
+  {
+      'first_name': 'Drew',
+      'last_name': 'Brees',
+      'rank': '13',
+  },
+  {
+      'first_name': 'Cam',
+      'last_name': 'Newton',
+      'rank': '14',
+  },
+  {
+      'first_name': 'Joe',
+      'last_name': 'Montana',
+      'rank': '15',
+  },
+  {
+      'first_name': 'Steve',
+      'last_name': 'Young',
+      'rank': '16',
+  },
+  {
+      'first_name': 'Dan',
+      'last_name': 'Jones',
+      'rank': '17',
+  },
+  {
+      'first_name': 'Eli',
+      'last_name': 'Manning',
+      'rank': '18',
+  },
+  {
+      'first_name': 'Marus',
+      'last_name': 'Marriota',
+      'rank': '19',
+  },
+  {
+      'first_name': 'Ryan',
+      'last_name': 'Fitzpatrick',
+      'rank': '21',
+  },
+  {
+      'first_name': 'Chad',
+      'last_name': 'Pennington',
+      'rank': '21',
+  },
+  {
+      'first_name': 'John',
+      'last_name': 'Doe',
+      'rank': '22',
+  },
+]
+
+
+/*
+1 - Loop Through Array & Access each value
+2 - Create Table Rows & append to table
+*/
+
+var alluserList=JSON.parse(localStorage.getItem("userData"));
+console.log('v2',alluserList);
+var state = {
+  'querySet': alluserList,
+
+  'page': 1,
+  'rows': 5,
+  'window': 5,
 }
 
-function readformData() { //Get data from input-box
-    let formData = {};
-    formData["fname"] = document.getElementById('fname').value;
-    formData["lname"] = document.getElementById('lname').value;
-    formData["degree"] = document.getElementById('degree').value;
-    formData["sdegree"] = document.getElementById('sdegree').value;
-    formData["dob"] = document.getElementById('dob').value;
-    formData["emailid"] = document.getElementById('emailid').value;
-    formData["pnumber"] = document.getElementById('pnumber').value;
-    return formData;
+buildTable()
+
+function pagination(querySet, page, rows) {
+
+  var trimStart = (page - 1) * rows
+  var trimEnd = trimStart + rows
+
+  var trimmedData = querySet.slice(trimStart, trimEnd)
+
+  var pages = Math.round(querySet.length / rows);
+
+  return {
+      'querySet': trimmedData,
+      'pages': pages,
+  }
 }
 
-function rand() { // For Student ID
-    return count = count + 1;
+function pageButtons(pages) {
+  var wrapper = document.getElementById('pagination-wrapper')
+
+  wrapper.innerHTML = ``
+console.log('Pages:', pages)
+
+  var maxLeft = (state.page - Math.floor(state.window / 2))
+  var maxRight = (state.page + Math.floor(state.window / 2))
+
+  if (maxLeft < 1) {
+      maxLeft = 1
+      maxRight = state.window
+  }
+
+  if (maxRight > pages) {
+      maxLeft = pages - (state.window - 1)
+      
+      if (maxLeft < 1){
+        maxLeft = 1
+      }
+      maxRight = pages
+  }
+  
+  
+
+  for (var page = maxLeft; page <= maxRight; page++) {
+    wrapper.innerHTML += `<button value=${page} class="page btn btn-sm btn-info">${page}</button>`
+  }
+
+  if (state.page != 1) {
+      wrapper.innerHTML = `<button value=${1} class="page btn btn-sm btn-info">&#171; First</button>` + wrapper.innerHTML
+  }
+
+  if (state.page != pages) {
+      wrapper.innerHTML += `<button value=${pages} class="page btn btn-sm btn-info">Last &#187;</button>`
+  }
+
+  $('.page').on('click', function() {
+      $('#table-body').empty()
+
+      state.page = Number($(this).val())
+
+      buildTable()
+  })
+
 }
 
-function insertNewRecord(data) { // Insert Data in Table
-    let table = document.getElementById('emp-list').getElementsByTagName('tbody')[0];
-    let newRow = table.insertRow(table.length);
 
-    //For Student ID 
-    cell0 = newRow.insertCell(0);
-    cell0.innerHTML = rand();
+function buildTable() {
+  var table = $('#table-body')
 
-    cell1 = newRow.insertCell(1);
-    cell1.innerHTML = data.fname;
+  var data = pagination(state.querySet, state.page, state.rows)
+  var myList = data.querySet
 
-    cell2 = newRow.insertCell(2);
-    cell2.innerHTML = data.lname;
+ 
 
-    cell3 = newRow.insertCell(3);
-    cell3.innerHTML = data.degree;
+  for (var i = 1 in myList) {
+      //Keep in mind we are using "Template Litterals to create rows"
+      var row = `<tr>
+                <td>${myList[i].firstname} ${myList[i].lastname}</td>
+                <td>${myList[i].email}</td>
+                <td>${myList[i].degree}</td>
+                <td>${myList[i].sdegree}</td>
+                <td>${myList[i].number}</td>
+                `
+      table.append(row)
+  }
 
-    cell4 = newRow.insertCell(4);
-    cell4.innerHTML = data.sdegree;
-
-    cell5 = newRow.insertCell(5);
-    cell5.innerHTML = data.dob;
-
-    cell6 = newRow.insertCell(6);
-    cell6.innerHTML = data.emailid;
-
-    cell7 = newRow.insertCell(7);
-    cell7.innerHTML = data.pnumber;
-
-    cell8 = newRow.insertCell(8);
-    cell8.innerHTML = `<a class="btn" onClick="onEdit(this)">Edit</a>
-                                           <a class="btn" onClick ="onDelete(this)">Delete</a>`;
+  pageButtons(data.pages)
 }
 
-function resetForm() { // Empty input-box
-    document.getElementById('fname').value = "";
-    document.getElementById('lname').value = "";
-    document.getElementById('degree').value = "";
-    document.getElementById('sdegree').value = "";
-    document.getElementById('dob').value = "";
-    document.getElementById('emailid').value = "";
-    document.getElementById('pnumber').value = "";
-    selectedRow = null;
-}
 
-function onEdit(td) { // For editing data in input-box
-    selectedRow = td.parentElement.parentElement;
-    document.getElementById('fname').value = selectedRow.cells[1].innerHTML;
-    document.getElementById('lname').value = selectedRow.cells[2].innerHTML;
-    document.getElementById('degree').value = selectedRow.cells[3].innerHTML;
-    document.getElementById('sdegree').value = selectedRow.cells[4].innerHTML;
-    document.getElementById('dob').value = selectedRow.cells[5].innerHTML;
-    document.getElementById('emailid').value = selectedRow.cells[6].innerHTML;
-    document.getElementById('pnumber').value = selectedRow.cells[7].innerHTML;
-}
-
-function updateRecord(formData) { // For Update data in Table
-    selectedRow.cells[1].innerHTML = formData.fname;
-    selectedRow.cells[2].innerHTML = formData.lname;
-    selectedRow.cells[3].innerHTML = formData.degree;
-    selectedRow.cells[4].innerHTML = formData.sdegree;
-    selectedRow.cells[5].innerHTML = formData.dob;
-    selectedRow.cells[6].innerHTML = formData.emailid;
-    selectedRow.cells[7].innerHTML = formData.pnumber;
-}
-
-function onDelete(td) {  // To delete data in Table
-    if (confirm('Are you Sure to Remove Data ?')) {
-        row = td.parentElement.parentElement;
-        document.getElementById('emp-list').deleteRow(row.rowIndex);
-        resetForm();
+function storeData(formData) {  // for save and get data in localstorage
+    let userList = [{
+        "firstname": formData.fname,
+        "lastname": formData.lname,
+        "degree": formData.degree,
+        "sdegree": formData.sdegree,
+        "dob": formData.dob,
+        "email": formData.emailid,
+        "pnumber": formData.pnumber
+    }];
+    if (localStorage.getItem('userArray') == null) {
+        localStorage.setItem('userArray', '[]');
     }
-}
+    let users = JSON.parse(localStorage.getItem('userArray'))
+    users.push(userList);
 
-function onDelete(td) { // Function to delete Table Data
-    if (confirm('Are you Sure to Remove Data ?')) {
-        row = td.parentElement.parentElement;
-        document.getElementById('emp-list').deleteRow(row.rowIndex);
-        resetForm();
+    localStorage.setItem('userArray', JSON.stringify(users));
+    if (localStorage.getItem('userArray') != null) {
+        console.log(JSON.parse(localStorage.getItem('userArray')));
     }
 }

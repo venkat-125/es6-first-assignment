@@ -1,93 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<div class="container">
-            <form class="form-horizontal" autocomplete="off" onsubmit="event.preventDefault(); onformSubmit();" role="form">
-                <h2>Student Table</h2>
-                <div class="form-group">
-                    <label for="firstName" class="col-sm-3 control-label">First Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="fname" name="fname" placeholder="First Name" class="form-control" autofocus required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="lname" name="lname" placeholder="Last Name" class="form-control" autofocus required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email* </label>
-                    <div class="col-sm-9">
-                        <input type="email" id="emailid" name="emailid" placeholder="Email" class="form-control" name= "email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Degree</label>
-                    <div class="col-sm-9">
-                        <input  type="text" id="degree" name="degree" placeholder="Degree" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Sub Degree</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="sdegree" name="sdegree" placeholder="Password" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>
-                    <div class="col-sm-9">
-                        <input type="date" id="dob" name="dob" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
-                    <div class="col-sm-9">
-                        <input type="number" id="pnumber" name="pnumber" placeholder="Phone number" class="form-control">
-                    </div>
-                </div>
-                <button type="submit" class="btn">Submit</button>
-
-
-                
-            </form> <!-- /form -->
-            <table class="display-block" id="emp-list">
-                  <tr>
-                      <th>ID</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Degree</th>
-                      <th>Sub-Degree</th>
-                      <th>DOB</th>
-                      <th>Email</th>
-                      <th>Mobile No.</th>
-                      <th>Edit/Delete</th>
-                  </tr>
-                  <tbody>
+<html>
+    <head>
+        <title>Javascript</title>
+        <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head> 
+    <body>
+      <div class="container">
+        <form>
+          <div class="input-form">
+            <input type="text" id="firstname" placeholder="First Name" /><span></span><br /><br />
+          </div>
+          <div class="input-form">
+            <input type="text" id="lastname" placeholder="Last Name" /><span></span><br /><br />
+          </div>
+          <div class="input-form">
+            <input type="text" id="email" placeholder="Email"/><span></span> <br /> <br />
+          </div>
+          <div class="input-form">
+            <input type="text" id="degree" placeholder="Degree"/><span></span> <br /> <br />
+          </div>
+          <div class="input-form">
+            <input type="text" id="sdegree" placeholder="Sub-Degree"/><span></span> <br /> <br />
+          </div>
+          <div class="input-form">
+            <input type="number" id="number" placeholder="Mobile Number"/><span></span> <br /> <br />
+          </div>
           
-                  </tbody>
-              </table>
-        </div> <!-- ./container -->
-    <script src="script.js"></script>
-</body>
+            <button onclick="addUser()" class="button">Add user</button>
+          
+        </form>
+      </div>
+      <div class="list">
+       
+        <table class="table" id="userData">
 
-</html>
+          
+        </table>       
+      </div>
+
+
+      <div class="container ">
+
+      </div>
+      <div class="container ">
+          <!-- Table structure here -->
+          <table class="table table-dark" id="our-table">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Degree</th>
+                      <th>Sub-Deg</th>
+                      <th>Number</th>
+                  </tr>
+              </thead>
+              <tbody id="table-body">
+      
+              </tbody>
+          </table>
+      </div>
+      
+      <div class="container ">
+          <div id="pagination-wrapper"></div>
+      </div>
+      
+   
+
+
+      
+  <script src="script.js">
+  
+      
+  
+  
+  </script>
+    </body>
+  </html>
+  
